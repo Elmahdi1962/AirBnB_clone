@@ -49,20 +49,12 @@ class HBNBCommand(cmd.Cmd):
 
         # check if the line has normal commands and
         # dosen't need reformatting
-        test_line = shlex.split(line)
-        if not ('.' in test_line[0] and '(' in test_line[0] and ')' in line):
+        try:
             splt_line = shlex.split(line)
-            if len(splt_line) > 3:
-                final_line = '{} {} {} {}'.format(splt_line[0],
-                                                  splt_line[1],
-                                                  splt_line[2],
-                                                  ' '.join(
-                                                           ('"' + r + '"')
-                                                           for r in
-                                                           splt_line[3:]
-                                                           ))
-                return final_line
-            else:
+        except Exception:
+            return line
+        if not ('.' in splt_line[0] and '(' in splt_line[0] and ')' in line):
+            if len(splt_line) <= 3:
                 return line
         # use this string as a refernece to the regex
         # User.update(id, {"first_name":"elmahdi", "email":"test@alx.com"})
