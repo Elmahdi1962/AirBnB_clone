@@ -53,8 +53,8 @@ class HBNBCommand(cmd.Cmd):
             splt_line = shlex.split(line)
         except Exception:
             return line
+
         if not ('.' in splt_line[0] and '(' in splt_line[0] and ')' in line):
-            if len(splt_line) <= 3:
                 return line
         # use this string as a refernece to the regex
         # User.update(id, {"first_name":"elmahdi", "email":"test@alx.com"})
